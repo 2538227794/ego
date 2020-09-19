@@ -17,7 +17,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @MapperScan("com.geo.item.mapper")
 public class EgoItemService {
     public static void main(String[] args) {
-        System.out.println();
         SpringApplication.run(EgoItemService.class,args);
     }
 }
