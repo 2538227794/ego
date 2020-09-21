@@ -6,7 +6,7 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 /**
  * @ClassNameEgoRegistry
- * @Descripiotn //TODO
+ * @Descripiotn
  * @Author luokun
  * @Date 2020/9/16 22:17
  * @Version 1.0

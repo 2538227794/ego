@@ -4,12 +4,23 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>ego-item</artifactId>
-        <groupId>com.ego.parent</groupId>
+        <groupId>com.ego.item</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>ego-item-interface</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.ego.parent</groupId>
+            <artifactId>ego-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

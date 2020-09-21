@@ -7,7 +7,7 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 /**
  * @ClassNameEgoGateway
- * @Descripiotn //TODO
+ * @Descripiotn
  * @Author luokun
  * @Date 2020/9/16 22:28
  * @Version 1.0
