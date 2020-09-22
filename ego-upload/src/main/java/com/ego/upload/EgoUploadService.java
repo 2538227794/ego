@@ -5,9 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @ClassNameEgoUploadService
- * @Descripiotn //TODO
+ * @Descripiotn 上传文件微服务启动类
  * @Author luokun
- * @Date 2020/9/20 22:06
+ * @Date 2020/9/21 10:53
  * @Version 1.0
  **/
 @SpringBootApplication

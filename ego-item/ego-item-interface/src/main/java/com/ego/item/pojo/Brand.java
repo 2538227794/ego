@@ -6,10 +6,10 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
- * @ClassNamebrand
+ * @ClassNameBrand
  * @Descripiotn 品牌实体
  * @Author luokun
- * @Date 2020/9/19 23:40
+ * @Date 2020/9/21 10:21
  * @Version 1.0
  **/
 @Data
@@ -20,5 +20,4 @@ public class Brand {
     private String name;
     private String image;
     private Character letter;
-
 }

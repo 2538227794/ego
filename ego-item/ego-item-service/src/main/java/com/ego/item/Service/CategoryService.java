@@ -1,4 +1,4 @@
-package com.ego.item.Service;
+package com.ego.item.service;
 
 import com.ego.item.pojo.Category;
 
@@ -6,28 +6,28 @@ import java.util.List;
 
 /**
  * @ClassNameCategoryService
- * @Descripiotn
+ * @Descripiotn 商品类业务接口
  * @Author luokun
- * @Date 2020/9/19 18:47
+ * @Date 2020/9/21 10:32
  * @Version 1.0
  **/
 public interface CategoryService {
     /**
      *
      * @Author luokun
-     * @Description //根据parentId查询商品类
+     * @Description 根据pid查询商品类
      * @Date 2020/7/8 10:05
-     * @param pid   parentId
+     * @param pid 父id
      * @return
      **/
-    List<Category> getCategoryListByParentId(Long pid);
+    List<Category> get(Long pid);
 
     /**
      *
      * @Author luokun
-     * @Description //新增商品
+     * @Description 新增商品类
      * @Date 2020/7/8 10:05
-     * @param category 商品对象
+     * @param
      * @return
      **/
     void add(Category category);
@@ -35,9 +35,10 @@ public interface CategoryService {
     /**
      *
      * @Author luokun
-     * @Description //根据id修改商品名
+     * @Description 根据id修改商品类名
      * @Date 2020/7/8 10:05
-     * @param id,name 商品id，商品名
+     * @param id 商品id
+     * @param name 商品类名
      * @return
      **/
     void update(Long id, String name);
@@ -45,10 +46,20 @@ public interface CategoryService {
     /**
      *
      * @Author luokun
-     * @Description 根据id删除商品
+     * @Description 根据id删除商品类
      * @Date 2020/7/8 10:05
-     * @param id 商品id
+     * @param id 商品类id
      * @return
      **/
     void delete(Long id);
+
+    /**
+     *
+     * @Author luokun
+     * @Description 根据bid获取对应品牌的商品类信息
+     * @Date 2020/7/8 10:05
+     * @param bid 品牌bid
+     * @return
+     **/
+    List<Category> getByBid(Long bid);
 }
