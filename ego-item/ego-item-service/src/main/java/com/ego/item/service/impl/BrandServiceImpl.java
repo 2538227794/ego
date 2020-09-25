@@ -3,13 +3,19 @@ package com.ego.item.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ego.commom.PageResult;
+import com.ego.commom.enums.ExceptionEnum;
+import com.ego.commom.exception.EgoException;
 import com.ego.item.mapper.BrandMapper;
 import com.ego.item.pojo.Brand;
 import com.ego.item.service.BrandService;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * @ClassNameBrandServiceImpl
@@ -20,6 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
  **/
 @Service
 @Transactional
+@Slf4j
 public class BrandServiceImpl implements BrandService {
     @Autowired
     private BrandMapper brandMapper;
@@ -68,6 +75,23 @@ public class BrandServiceImpl implements BrandService {
         brandMapper.deleteBrandIdCategoryId(id);
         //删除品牌
         brandMapper.deleteById(id);
+    }
+
+    @Override
+    public List<Brand> getBrandListByCategoryId(Long categoryId) {
+        try {
+            //商品类id获取品牌ids
+            List<Long> brandIds =brandMapper.selectBrandIdCategoryId(categoryId);
+//            if (CollectionUtils.isEmpty(brandIds)){
+//                throw new EgoException();
+//            }
+            //品牌ids获取品牌
+            List<Brand> brands = brandMapper.selectBatchIds(brandIds);
+            return brands;
+        }  catch (Exception e){
+            log.error("品牌查询异常{}",e);
+            throw new EgoException(ExceptionEnum.BRAND_NOT_FOUND);
+        }
     }
 
 }

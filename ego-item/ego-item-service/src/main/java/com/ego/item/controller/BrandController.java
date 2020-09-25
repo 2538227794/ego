@@ -11,7 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.ws.rs.GET;
+import java.util.List;
+
 
 /**
  * @ClassNameBrandController
@@ -35,6 +36,7 @@ public class BrandController {
      * @param
      * @return
      **/
+
     @GetMapping("/page")
     public ResponseEntity<PageResult<Brand>> page(
             @RequestParam("pageNo") Integer pageNo,
@@ -137,5 +139,20 @@ public class BrandController {
         }
         //响应500
         return ResponseEntity.status(HttpStatus.SC_INTERNAL_SERVER_ERROR).build();
+    }
+
+    /**
+     * @Author luokun
+     * @Description 根据商品类id获取品牌List
+     * @Date  2020/9/23 21:47
+     * @Param [categoryId]
+     * @return org.springframework.http.ResponseEntity<java.util.List<com.ego.item.pojo.Brand>>
+     **/
+    @GetMapping("/cid/{categoryId}")
+    public ResponseEntity<List<Brand>> queryBrandListByCategoryId(@PathVariable("categoryId") Long categoryId ){
+        //查询品牌
+        List<Brand> brands=brandService.getBrandListByCategoryId(categoryId);
+        //响应200
+        return ResponseEntity.ok(brands);
     }
 }

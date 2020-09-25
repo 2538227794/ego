@@ -1,4 +1,4 @@
-package com.geo.register;
+package com.ego.register;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

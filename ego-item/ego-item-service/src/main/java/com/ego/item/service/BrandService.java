@@ -3,6 +3,8 @@ package com.ego.item.service;
 import com.ego.commom.PageResult;
 import com.ego.item.pojo.Brand;
 
+import java.util.List;
+
 /**
  * @ClassNameBrandService
  * @Descripiotn 品牌业务接口
@@ -51,4 +53,13 @@ public interface BrandService {
      * @return
      **/
     void deleteById(Long id);
+
+    /**
+     * @Author luokun
+     * @Description 获取品牌根据商品类id
+     * @Date  2020/9/23 21:49
+     * @Param []
+     * @return java.util.List<com.ego.item.pojo.Brand>
+     **/
+    List<Brand> getBrandListByCategoryId(Long categoryId);
 }

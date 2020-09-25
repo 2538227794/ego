@@ -5,6 +5,9 @@ import com.ego.item.pojo.Brand;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 /**
  * @ClassNameBrandMapper
@@ -37,4 +40,14 @@ public interface BrandMapper extends BaseMapper<Brand> {
      **/
     @Delete("delete from tb_category_brand where brand_id=#{brand_id}")
     void deleteBrandIdCategoryId(@Param("brand_id") Long id);
+
+    /**
+     * @Author luokun
+     * @Description 根据商品类id获取品牌ids
+     * @Date  2020/9/23 21:54
+     * @Param [categoryId]
+     * @return java.util.List<java.lang.Long>
+     **/
+    @Select("select brand_id from tb_category_brand where category_id=#{categoryId} ")
+    List<Long> selectBrandIdCategoryId(@Param("categoryId") Long categoryId);
 }
