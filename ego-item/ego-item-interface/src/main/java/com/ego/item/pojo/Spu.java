@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @ClassName Spu
@@ -87,4 +88,7 @@ public class Spu implements Serializable {
     private Date lastUpdateTime;
 
     private static final long serialVersionUID = 1L;
+
+    public Spu() {
+    }
 }

@@ -79,4 +79,10 @@ public class Sku implements Serializable {
     private LocalDateTime lastUpdateTime;
 
     private static final long serialVersionUID = 1L;
+
+    /**
+     * 非表字段
+     */
+    @TableField(exist = false)
+    private Stock stock;// 库存
 }

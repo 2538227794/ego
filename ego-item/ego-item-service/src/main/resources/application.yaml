@@ -25,6 +25,7 @@ mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: /mappers/*.xml
+  type-aliases-package: com.ego.item.pojo
 logging:
   level:
     root: info

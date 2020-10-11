@@ -8,7 +8,7 @@ import com.ego.commom.exception.EgoException;
 import com.ego.item.bo.SpuBo;
 import com.ego.item.mapper.BrandMapper;
 import com.ego.item.mapper.CategoryMapper;
-import com.ego.item.mapper.SpuMaaper;
+import com.ego.item.mapper.SpuMapper;
 import com.ego.item.pojo.Category;
 import com.ego.item.pojo.Spu;
 import com.ego.item.service.GoodsService;
@@ -32,7 +32,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class GoodsServiceImpl implements GoodsService {
     @Autowired
-    private SpuMaaper spuMaaper;
+    private SpuMapper spuMapper;
     @Autowired
     private CategoryMapper categoryMapper;
     @Autowired
@@ -51,7 +51,7 @@ public class GoodsServiceImpl implements GoodsService {
             if(saleable!=null){
                 queryWarry.eq("saleable",saleable);
             }
-            Page<Spu> spuPage = spuMaaper.selectPage(new Page<>(page, rows), queryWarry);
+            Page<Spu> spuPage = spuMapper.selectPage(new Page<>(page, rows), queryWarry);
             //Spu转换为SpuBo
             List<SpuBo> spuBoList = spuPage.getRecords().stream().map(spu -> {
                 SpuBo spuBo = new SpuBo();
@@ -74,5 +74,22 @@ public class GoodsServiceImpl implements GoodsService {
             log.error("SPU分页异常：",e);
             throw new EgoException(ExceptionEnum.SPU_PAGE_EXCEPTION);
         }
+    }
+
+    @Override
+    public List<SpuBo> getPage(Integer page, Integer rows) {
+        try {
+            List<SpuBo> spuBoList = spuMapper.selectPage(null, true, (page- 1) * rows,rows);
+            return spuBoList;
+        } catch (Exception e) {
+            log.error("分页查询异常：{}",e);
+            throw new EgoException(ExceptionEnum.GOODS_PAGE_ERROR);
+        }
+    }
+
+    @Override
+    public SpuBo queryGoodsById(Long id) {
+        SpuBo spuBo = spuMapper.selectSpuBoById(id);
+        return spuBo;
     }
 }

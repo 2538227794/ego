@@ -158,4 +158,16 @@ public class CategoryController {
         return ResponseEntity.status(HttpStatus.SC_INTERNAL_SERVER_ERROR).build();
     }
 
+    /**
+     * @Author luokun
+     * @Description idList批量查询Category
+     * @Date  2020/10/8 12:25
+     * @Param [idList]
+     * @return java.util.List<com.ego.item.pojo.Category>
+     **/
+    @GetMapping("/list/ids")
+    ResponseEntity<List<Category>> getCategoryListByIds(@RequestParam("ids") List<Long> idList){
+        List<Category> categories = categoryService.findListByIds(idList);
+        return ResponseEntity.ok(categories);
+    }
 }

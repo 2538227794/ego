@@ -6,11 +6,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public enum ExceptionEnum implements IException {
 
+
     BRAND_CREATE_FAILED(500, "新增品牌失败"),
     BRAND_NOT_FOUND(404, "品牌查询失败"),
     UPDATE_BRAND_FAILED(500, "品牌更新失败"),
     DELETE_BRAND_EXCEPTION(500, "删除品牌失败"),
 
+    BUILD_GOODS_EXCEPTION(500,"Spu转Good异常"),
+    GOODS_PAGE_ERROR(404,"商品分页查询失败"),
     GOODS_SAVE_ERROR(500, "新增商品错误"),
     GOODS_NOT_FOUND(400, "商品未查询到"),
     GOODS_NOT_SALEABLE(400, "商品未上架"),
@@ -51,7 +54,7 @@ public enum ExceptionEnum implements IException {
     CREATE_PAY_URL_ERROR(500, "常见支付链接异常"),
     WX_PAY_SIGN_INVALID(400, "微信支付签名异常"),
     WX_PAY_NOTIFY_PARAM_ERROR(400, "微信支付回调参数异常"),
-    ;
+    QUERY_SPECS_EXCEPTION(500,"查询其他过滤条件异常");
 
     int code;
     String message;
@@ -66,4 +69,6 @@ public enum ExceptionEnum implements IException {
     public String getMessage() {
         return message;
     }
+
+    public enum QUERY_SPECS_EXCEPTION {}
 }

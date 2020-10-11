@@ -62,4 +62,6 @@ public interface BrandService {
      * @return java.util.List<com.ego.item.pojo.Brand>
      **/
     List<Brand> getBrandListByCategoryId(Long categoryId);
+
+    List<Brand> findListByIds(List<Long> idList);
 }

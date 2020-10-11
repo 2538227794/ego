@@ -94,4 +94,11 @@ public class BrandServiceImpl implements BrandService {
         }
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<Brand> findListByIds(List<Long> idList) {
+        List<Brand> brands = brandMapper.selectBatchIds(idList);
+        return brands;
+    }
+
 }

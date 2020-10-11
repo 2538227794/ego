@@ -4,6 +4,7 @@ import com.ego.item.pojo.Sku;
 import com.ego.item.pojo.Spu;
 import com.ego.item.pojo.SpuDetail;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -32,4 +33,7 @@ public class SpuBo extends Spu {
      *  标准单位详情
      **/
     private SpuDetail spuDetail;
+
+    public SpuBo() {
+    }
 }

@@ -7,11 +7,11 @@ import com.ego.item.pojo.Spu;
 import com.ego.item.service.GoodsService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @ClassName GoodsController
@@ -27,6 +27,13 @@ public class GoodsController {
     private GoodsService goodsService;
     //http://api.ego.com/api/item/goods/spu/page?key=&saleable=true&page=1&rows=5
 
+    /**
+     * @Author luokun
+     * @Description 商品列表查询
+     * @Date  2020/9/27 15:03
+     * @Param [key, saleable, page, rows]
+     * @return org.springframework.http.ResponseEntity<com.ego.commom.PageResult<com.ego.item.bo.SpuBo>>
+     **/
     @GetMapping("/spu/page")
     public ResponseEntity<PageResult<SpuBo>> queryPage(
             @RequestParam("key") String key,
@@ -42,5 +49,43 @@ public class GoodsController {
         }
         //响应404
         return ResponseEntity.notFound().build();
+    }
+
+    /**
+     * @Author luokun
+     * @Description 批次获取上架商品数据
+     * @Date  2020/9/27 15:12
+     * @Param [page, rows]
+     * @return java.util.List<com.ego.item.bo.SpuBo>
+     **/
+    @GetMapping("/spu/batchGoods")
+    public ResponseEntity<List<SpuBo>> queryPage(
+            @RequestParam("page") Integer page,
+            @RequestParam("rows")Integer rows
+    ){
+        //分页查询
+        List<SpuBo> spuBoList=goodsService.getPage(page,rows);
+        if(CollectionUtils.isNotEmpty(spuBoList)){
+            //响应200
+            return ResponseEntity.ok(spuBoList);
+        }
+        //响应404
+        return ResponseEntity.notFound().build();
+    }
+
+    /**
+     * @Author luokun
+     * @Description
+     * @Date  2020/10/9 1:07
+     * @Param [id]
+     * @return org.springframework.http.ResponseEntity<com.ego.item.bo.SpuBo>
+     **/
+    @GetMapping("/spubo/{id}")
+    public ResponseEntity<SpuBo> queryGoodsById(@PathVariable("id") Long id){
+        SpuBo spuBo=this.goodsService.queryGoodsById(id);
+        if (spuBo == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.ok(spuBo);
     }
 }

@@ -61,4 +61,10 @@ public class CategoryServiceImpl implements CategoryService {
         return null;
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<Category> findListByIds(List<Long> idList) {
+        List<Category> categories = categoryMapper.selectBatchIds(idList);
+        return categories;
+    }
 }

@@ -1,6 +1,7 @@
 package com.ego.item.service;
 
 import com.ego.item.pojo.Category;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -62,4 +63,13 @@ public interface CategoryService {
      * @return
      **/
     List<Category> getByBid(Long bid);
+
+    /**
+     * @Author luokun
+     * @Description idList批量查询Category
+     * @Date  2020/10/8 12:46
+     * @Param [idList]
+     * @return java.util.List<com.ego.item.pojo.Category>
+     **/
+    List<Category> findListByIds(List<Long> idList);
 }

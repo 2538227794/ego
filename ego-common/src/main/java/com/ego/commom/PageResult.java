@@ -20,6 +20,10 @@ public class PageResult<T> {
     public PageResult() {
     }
 
+    public PageResult(List<T> items) {
+        this.items = items;
+    }
+
     public PageResult(Long total, List<T> items) {
         this.total = total;
         this.items = items;

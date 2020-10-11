@@ -1,5 +1,6 @@
 package com.ego.item.controller;
 
+import com.baomidou.mybatisplus.extension.api.R;
 import com.ego.commom.PageResult;
 import com.ego.item.pojo.Brand;
 import com.ego.item.service.BrandService;
@@ -154,5 +155,17 @@ public class BrandController {
         List<Brand> brands=brandService.getBrandListByCategoryId(categoryId);
         //响应200
         return ResponseEntity.ok(brands);
+    }
+
+    /**
+     * @Author luokun
+     * @Description
+     * @Date  2020/10/8 12:57
+     * @Param [idList]
+     * @return org.springframework.http.ResponseEntity<java.util.List<com.ego.item.pojo.Brand>>
+     **/
+    @GetMapping("/list/ids")
+    ResponseEntity<List<Brand>> getBrandListByIds(@RequestParam("ids") List<Long> idList){
+        return ResponseEntity.ok(brandService.findListByIds(idList));
     }
 }

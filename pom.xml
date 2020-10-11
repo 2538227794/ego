@@ -9,6 +9,8 @@
         <module>ego-item</module>
         <module>ego-common</module>
         <module>ego-upload</module>
+        <module>ego-search</module>
+        <module>ego-goods-web</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
